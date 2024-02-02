@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccipqhg2rsaw1"]
+
+[ext_resource type="Texture2D" uid="uid://cjbujb3nlc4hv" path="res://Blocks/assests/big-crate.png" id="1_b57nn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvgdg"]
+size = Vector2(49, 46)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -25.0
+offset_top = -23.0
+offset_right = 24.0
+offset_bottom = 23.0
+texture = ExtResource("1_b57nn")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dvgdg")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://5m8xvxl0oq0e"]
+
+[ext_resource type="Texture2D" uid="uid://byx3encr1uau5" path="res://background.jpg" id="1_lxakw"]
+[ext_resource type="Script" path="res://menu.gd" id="1_qrwba"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qrwba")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_lxakw")
+expand_mode = 1
+
+[node name="PLAY" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 190.0
+offset_right = 353.0
+offset_bottom = 307.0
+text = "PLAY"
+
+[node name="EXIT" type="Button" parent="."]
+offset_left = 35.0
+offset_top = 359.0
+offset_right = 356.0
+offset_bottom = 472.0
+text = "EXIT"
+
+[connection signal="pressed" from="PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]

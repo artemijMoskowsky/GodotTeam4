@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://v45qhi70xc6b"]
+
+[ext_resource type="Texture2D" uid="uid://f2b3ts614pwq" path="res://World/assets/background.png" id="1_p0pko"]
+[ext_resource type="PackedScene" uid="uid://ydnhldcujkuk" path="res://World/portal.tscn" id="2_1ayiq"]
+[ext_resource type="PackedScene" uid="uid://b87po7j4kxvc" path="res://Player/player.tscn" id="3_da42v"]
+[ext_resource type="PackedScene" uid="uid://hwf5sbfxvt1a" path="res://Enemies/skeleton.tscn" id="4_lgbn6"]
+[ext_resource type="PackedScene" uid="uid://cppoxctalnrv4" path="res://World/set1.tscn" id="5_teas6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_begin = Vector2(0, -1)
+scroll_limit_end = Vector2(0, 650)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("1_p0pko")
+metadata/_edit_use_anchors_ = true
+
+[node name="Portal" parent="." instance=ExtResource("2_1ayiq")]
+position = Vector2(1516, 107)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_da42v")]
+position = Vector2(174, 240)
+
+[node name="Enemy" parent="." instance=ExtResource("4_lgbn6")]
+position = Vector2(723, 243)
+scale = Vector2(1.01005, 1.03355)
+mass = 0.01
+gravity_scale = 0.0
+start_x = 50
+end_x = 50
+speed = 1
+
+[node name="TileMap" parent="." instance=ExtResource("5_teas6")]
+position = Vector2(-3, 1)
+layer_0/tile_data = PackedInt32Array(720905, 327681, 1, 720906, 327681, 1, 720907, 1, 3, 655371, 1, 2, 655372, 65537, 2, 655373, 65537, 2, 655383, 589825, 3, 655384, 393217, 1, 655385, 65537, 2, 655386, 65537, 2, 655387, 65537, 2, 655388, 65537, 2, 655389, 65537, 2, 655390, 65537, 2, 655391, 65537, 2, 655392, 65537, 2, 655393, 65537, 2, 655394, 65537, 2, 655395, 65537, 2, 655396, 65537, 2, 655397, 65537, 2, 655398, 65537, 2, 655399, 65537, 2, 655400, 65537, 2, 655401, 65537, 2, 655402, 65537, 2, 655403, 65537, 2, 655404, 65537, 2, 655405, 65537, 2, 655406, 65537, 2, 655407, 65537, 2, 655408, 65537, 2, 655409, 65537, 2, 655410, 65537, 2, 655411, 65537, 2, 655412, 65537, 2, 655413, 65537, 2, 655414, 65537, 2, 655415, 65537, 2, 655416, 65537, 2, 655417, 65537, 2, 720901, 327681, 1, 720900, 327681, 1, 720899, 327681, 1, 720898, 327681, 1, 720897, 327681, 1, 720896, 327681, 1, 786431, 327681, 1, 786430, 327681, 1, 786429, 327681, 1, 786428, 327681, 1, 786427, 327681, 1, 786426, 327681, 1, 786425, 327681, 1, 786424, 327681, 1, 786423, 327681, 1, 786422, 327681, 1, 786421, 327681, 1, 786420, 327681, 1, 786419, 327681, 1, 786418, 327681, 1, 786417, 327681, 1, 786416, 327681, 1, 786415, 327681, 1, 720902, 327681, 1, 720903, 327681, 1, 720904, 327681, 1, 655418, 262145, 1, 655419, 327681, 1, 655420, 327681, 1, 655421, 327681, 1, 655422, 327681, 1, 655423, 327681, 1, 655424, 327681, 1, 655425, 327681, 1, 655426, 327681, 1, 655374, 131073, 2, 655375, 1, 3, 589839, 1, 2, 589840, 262145, 1, 589841, 327681, 1, 589842, 327681, 1, 589843, 393217, 1, 589844, 65537, 2, 589845, 65537, 2, 589846, 65537, 2, 589847, 589825, 2)
