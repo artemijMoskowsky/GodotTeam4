@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk3ulpurupxkx"]
+
+[ext_resource type="Script" path="res://World/switch.gd" id="1_4bov8"]
+[ext_resource type="Texture2D" uid="uid://gcmnlfarp3as" path="res://World/assets/switch/1.png" id="2_5oelk"]
+[ext_resource type="Texture2D" uid="uid://bnlnbb1j6d87f" path="res://World/assets/switch/2.png" id="3_3n0ig"]
+[ext_resource type="Texture2D" uid="uid://88v7lhsw3dxy" path="res://World/assets/switch/3.png" id="4_sko0l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gg7cc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5oelk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3n0ig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sko0l")
+}],
+"loop": false,
+"name": &"activated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5oelk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0q7w"]
+size = Vector2(28, 21)
+
+[node name="Switch" type="Area2D" groups=["switches"]]
+script = ExtResource("1_4bov8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_gg7cc")
+animation = &"activated"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_m0q7w")

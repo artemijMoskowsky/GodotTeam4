@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://8rslxrnmudim"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_hka2d"]
+[ext_resource type="Texture2D" uid="uid://cpx4dsrme6vfc" path="res://Player/assets/Buttons/continue2.png" id="2_j315q"]
+[ext_resource type="Texture2D" uid="uid://d1a22dshjp7cm" path="res://Player/assets/Buttons/options.png" id="3_rasvw"]
+[ext_resource type="Texture2D" uid="uid://dcqq7pxhux3nm" path="res://Player/assets/Buttons/exit2.png" id="4_ic8be"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jxk7e"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ugvet"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hibfy"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pxeo"]
+light_mode = 1
+
+[node name="Pause_menu" type="Node2D" groups=["pause_menu"]]
+process_mode = 3
+z_index = 4096
+script = ExtResource("1_hka2d")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_jxk7e")
+offset_left = -9.0
+offset_top = -37.0
+offset_right = 472.0
+offset_bottom = 252.0
+
+[node name="Resume" type="TouchScreenButton" parent="Panel"]
+material = SubResource("CanvasItemMaterial_ugvet")
+position = Vector2(123, 32)
+scale = Vector2(2.36, 1.32)
+texture_normal = ExtResource("2_j315q")
+
+[node name="Options" type="TouchScreenButton" parent="Panel"]
+material = SubResource("CanvasItemMaterial_hibfy")
+position = Vector2(123, 105)
+scale = Vector2(2.36, 1.32)
+texture_normal = ExtResource("3_rasvw")
+
+[node name="Exit" type="TouchScreenButton" parent="Panel"]
+material = SubResource("CanvasItemMaterial_4pxeo")
+position = Vector2(123, 178)
+scale = Vector2(2.36, 1.2)
+texture_normal = ExtResource("4_ic8be")
+
+[connection signal="pressed" from="Panel/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]

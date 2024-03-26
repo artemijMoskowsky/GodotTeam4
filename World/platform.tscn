@@ -1,0 +1,62 @@
+[gd_scene load_steps=13 format=3 uid="uid://muvvpmb7trxy"]
+
+[ext_resource type="Texture2D" uid="uid://dkbggpnwarsb4" path="res://World/assets/Platform/1.png" id="1_r1hwb"]
+[ext_resource type="Script" path="res://World/platform.gd" id="1_vands"]
+[ext_resource type="Texture2D" uid="uid://cs01t8oois8tc" path="res://World/assets/Platform/2.png" id="2_pwusi"]
+[ext_resource type="Texture2D" uid="uid://dyqntt62eu5hv" path="res://World/assets/Platform/3.png" id="3_ah7h4"]
+[ext_resource type="Texture2D" uid="uid://calqh7mm17mt3" path="res://World/assets/Platform/4.png" id="4_bhv5n"]
+[ext_resource type="Texture2D" uid="uid://tm4alwvn7q1v" path="res://World/assets/Platform/5.png" id="5_0uxlv"]
+[ext_resource type="Texture2D" uid="uid://b58lieweearai" path="res://World/assets/Platform/6.png" id="6_fa06v"]
+[ext_resource type="Texture2D" uid="uid://ddth1qtt2lt8h" path="res://World/assets/Platform/7.png" id="7_cu4oe"]
+[ext_resource type="Texture2D" uid="uid://dbg1ll676x0t" path="res://World/assets/Platform/8.png" id="8_0pi33"]
+[ext_resource type="Texture2D" uid="uid://w7obex4f8h6i" path="res://World/assets/Platform/9.png" id="9_m001q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scini"]
+size = Vector2(24.4, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dompu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r1hwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pwusi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ah7h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bhv5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0uxlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fa06v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cu4oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0pi33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m001q")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Platform" type="StaticBody2D" groups=["platforms"]]
+script = ExtResource("1_vands")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.02, 1.02)
+shape = SubResource("RectangleShape2D_scini")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_dompu")

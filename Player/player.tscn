@@ -1,8 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://b87po7j4kxvc"]
+[gd_scene load_steps=70 format=3 uid="uid://b87po7j4kxvc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_xihc3"]
+[ext_resource type="Texture2D" uid="uid://birr6fwus3dcs" path="res://Player/assets/Player-attack/1.png" id="2_2uw5k"]
 [ext_resource type="Texture2D" uid="uid://ckpdr4h10qkhj" path="res://Player/assets/Player-idle/1.png" id="2_bcy1c"]
+[ext_resource type="Texture2D" uid="uid://cfos4c45wd8mj" path="res://Player/assets/Player-attack/2.png" id="3_78abn"]
 [ext_resource type="Texture2D" uid="uid://27vxe7emc61j" path="res://Player/assets/Player-idle/2.png" id="3_p2skc"]
+[ext_resource type="Texture2D" uid="uid://bjujpiny4yt81" path="res://Player/assets/Player-attack/3.png" id="4_0ipkr"]
 [ext_resource type="Texture2D" uid="uid://diukbn5tmvaxg" path="res://Player/assets/Player-idle/3.png" id="4_1xll1"]
 [ext_resource type="Texture2D" uid="uid://bho3l5i31wd0m" path="res://Player/assets/Player-idle/4.png" id="5_dpx2e"]
 [ext_resource type="Texture2D" uid="uid://ccpybvq1j6h13" path="res://Player/assets/Player-idle/5.png" id="6_o7uno"]
@@ -23,9 +26,42 @@
 [ext_resource type="Texture2D" uid="uid://dsmlfjdpsa1yp" path="res://Player/assets/Player-run/10.png" id="19_803ob"]
 [ext_resource type="Texture2D" uid="uid://bsk4dih3semxj" path="res://Player/assets/Player-run/11.png" id="20_nmk28"]
 [ext_resource type="Texture2D" uid="uid://dudhxkwhva8v0" path="res://Player/assets/Player-run/12.png" id="21_iiogt"]
+[ext_resource type="Texture2D" uid="uid://cixxqm6hkd7xw" path="res://Player/assets/Health/No_Health.png" id="24_4wwi7"]
+[ext_resource type="Texture2D" uid="uid://b5ilgllr262s" path="res://Player/assets/Health/Full_Health.png" id="25_7lq8q"]
+[ext_resource type="PackedScene" uid="uid://8rslxrnmudim" path="res://pause_menu.tscn" id="26_ovxqp"]
+[ext_resource type="Texture2D" uid="uid://ddnuamdkx2jh0" path="res://Player/assets/Attack/1.png" id="27_13c7y"]
+[ext_resource type="Texture2D" uid="uid://3sbc60msyj7i" path="res://Player/assets/Attack/0.png" id="27_uy0jy"]
+[ext_resource type="Texture2D" uid="uid://b3v5v2bff542l" path="res://Player/assets/Health/frame.png" id="27_xrkeu"]
+[ext_resource type="Texture2D" uid="uid://co5vd5u500hl8" path="res://Player/assets/coin.png" id="28_6cgwu"]
+[ext_resource type="Texture2D" uid="uid://8tw5jxgwrnc6" path="res://Player/assets/Attack/2.png" id="28_5001k"]
+[ext_resource type="Texture2D" uid="uid://jj6u0070na0r" path="res://Player/assets/Attack/3.png" id="29_bk12b"]
+[ext_resource type="Texture2D" uid="uid://dgywar8fjrwbf" path="res://Player/assets/Attack/4.png" id="30_jqfhn"]
+[ext_resource type="Texture2D" uid="uid://c2hmjbncr4wbe" path="res://Player/assets/Attack/5.png" id="31_gdv5h"]
+[ext_resource type="AudioStream" uid="uid://daa66n1b8aq1o" path="res://Player/assets/Sounds/snow_step.mp3" id="38_hn3ep"]
+[ext_resource type="Texture2D" uid="uid://c0fiaynd4msea" path="res://Player/assets/Buttons/jump.png" id="39_xgqqb"]
+[ext_resource type="PackedScene" uid="uid://dxh2e4e3mmtqg" path="res://Player/inventory.tscn" id="40_oqysx"]
+[ext_resource type="Texture2D" uid="uid://k6ml4e3dax0j" path="res://Player/assets/Buttons/attack.png" id="40_ppxvq"]
+[ext_resource type="Texture2D" uid="uid://0ukl0iocdxm6" path="res://Player/assets/Buttons/spell.png" id="41_4lccg"]
+[ext_resource type="PackedScene" uid="uid://bip60vdf146o2" path="res://Player/joystick/joystick.tscn" id="41_ayprf"]
+[ext_resource type="Texture2D" uid="uid://bml8tgbia8axj" path="res://Player/assets/Buttons/pause.png" id="41_xpitb"]
+[ext_resource type="PackedScene" uid="uid://m2sp4nuvrbfs" path="res://World/message.tscn" id="42_0rsuk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7cnum"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2uw5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_78abn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ipkr")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_bcy1c")
@@ -107,6 +143,34 @@ animations = [{
 "name": &"Run",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_u7n6b"]
+resource_name = "Attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
 
 [sub_resource type="Animation" id="Animation_jtdyf"]
 resource_name = "Idle"
@@ -222,6 +286,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0iud5"]
 _data = {
+"Attack": SubResource("Animation_u7n6b"),
 "Idle": SubResource("Animation_jtdyf"),
 "Jump": SubResource("Animation_5cwv1"),
 "RESET": SubResource("Animation_r1ysu"),
@@ -231,6 +296,83 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fwr7"]
 radius = 9.0
 height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v77my"]
+size = Vector2(40, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2xe1"]
+size = Vector2(39.75, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2vng"]
+size = Vector2(55.9999, 26.7493)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydwyp"]
+size = Vector2(56, 26.375)
+
+[sub_resource type="Gradient" id="Gradient_seegh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brjxs"]
+gradient = SubResource("Gradient_seegh")
+fill = 1
+fill_from = Vector2(0.486239, 0.481651)
+fill_to = Vector2(0.729358, 0.261468)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h6ah0"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7gr66"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kd04q"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_atpvy"]
+light_mode = 1
+
+[sub_resource type="Theme" id="Theme_t4ir6"]
+Label/colors/font_color = Color(0.372549, 0.270588, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuwre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_uy0jy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_13c7y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_5001k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bk12b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jqfhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_gdv5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_uy0jy")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xek6s"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_18p7d"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cd3hr"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_23xuy"]
+light_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_xihc3")
@@ -252,5 +394,180 @@ libraries = {
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_3fwr7")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
+position = Vector2(0, -39)
+zoom = Vector2(2.5, 2.5)
+
+[node name="damage_cd" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="r_attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="r_attack"]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_v77my")
+debug_color = Color(0.992157, 0, 0.254902, 0.419608)
+
+[node name="l_attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="l_attack"]
+position = Vector2(-21, 0)
+shape = SubResource("RectangleShape2D_x2xe1")
+debug_color = Color(0.984314, 0, 0.329412, 0.419608)
+
+[node name="u_attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="u_attack"]
+position = Vector2(-1, -13)
+rotation = 0.00139189
+shape = SubResource("RectangleShape2D_q2vng")
+debug_color = Color(0.972549, 0, 0, 0.419608)
+
+[node name="d_attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="d_attack"]
+position = Vector2(-1, 13.8125)
+shape = SubResource("RectangleShape2D_ydwyp")
+debug_color = Color(0.984314, 0, 0, 0.419608)
+
+[node name="Light" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(7.2, 7.21278)
+energy = 0.2
+shadow_enabled = true
+shadow_filter_smooth = 4.5
+texture = SubResource("GradientTexture2D_brjxs")
+
+[node name="Shadow" type="PointLight2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(7.2, 7.21278)
+energy = 0.8
+shadow_filter_smooth = 4.5
+texture = SubResource("GradientTexture2D_brjxs")
+
+[node name="attack_cd" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="health_frame" type="TextureRect" parent="."]
+light_mask = 2
+z_index = 100
+material = SubResource("CanvasItemMaterial_h6ah0")
+offset_left = -229.0
+offset_top = -168.0
+offset_right = -74.0
+offset_bottom = -133.0
+texture = ExtResource("27_xrkeu")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+light_mask = 2
+z_index = 4096
+material = SubResource("CanvasItemMaterial_7gr66")
+offset_left = -189.0
+offset_top = -153.0
+offset_right = -86.0
+offset_bottom = -148.0
+max_value = 50.0
+value = 50.0
+texture_under = ExtResource("24_4wwi7")
+texture_progress = ExtResource("25_7lq8q")
+
+[node name="Coins" type="TextureRect" parent="."]
+light_mask = 2
+z_index = 100
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_kd04q")
+offset_left = -230.0
+offset_top = -133.0
+offset_right = -190.0
+offset_bottom = -93.0
+texture = ExtResource("28_6cgwu")
+
+[node name="coins_label" type="Label" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 5
+material = SubResource("CanvasItemMaterial_atpvy")
+offset_left = -191.0
+offset_top = -125.0
+offset_right = -151.0
+offset_bottom = -102.0
+theme = SubResource("Theme_t4ir6")
+text = "0"
+
+[node name="Pause_menu" parent="." instance=ExtResource("26_ovxqp")]
+visible = false
+position = Vector2(-230, -129)
+
+[node name="Attack_anim" type="AnimatedSprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+position = Vector2(19, 2.38419e-07)
+scale = Vector2(1.6, 1.36)
+sprite_frames = SubResource("SpriteFrames_xuwre")
+frame = 6
+frame_progress = 1.0
+
+[node name="attack_anim" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("38_hn3ep")
+volume_db = -15.0
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+visible = false
+
+[node name="ButtonJump" type="TouchScreenButton" parent="."]
+z_index = 10
+material = SubResource("CanvasItemMaterial_xek6s")
+position = Vector2(175, 36)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("39_xgqqb")
+
+[node name="ButtonAttack" type="TouchScreenButton" parent="."]
+z_index = 10
+material = SubResource("CanvasItemMaterial_18p7d")
+position = Vector2(130, -8)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("40_ppxvq")
+
+[node name="ButtonSpell1" type="TouchScreenButton" parent="."]
+z_index = 10
+material = SubResource("CanvasItemMaterial_18p7d")
+position = Vector2(175, -8)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("41_4lccg")
+
+[node name="ButtonPause" type="TouchScreenButton" parent="."]
+z_index = 10
+material = SubResource("CanvasItemMaterial_cd3hr")
+position = Vector2(201, -165)
+texture_normal = ExtResource("41_xpitb")
+
+[node name="joystick" parent="." instance=ExtResource("41_ayprf")]
+z_index = 10
+position = Vector2(-173, 38)
+scale = Vector2(0.400001, 0.4)
+
+[node name="Inventory" parent="." instance=ExtResource("40_oqysx")]
+z_index = 12
+position = Vector2(-231, -169)
+
+[node name="Message" parent="." instance=ExtResource("42_0rsuk")]
+material = SubResource("CanvasItemMaterial_23xuy")
+offset_left = -125.0
+offset_top = 47.0
+offset_right = -86.0
+offset_bottom = 70.0
+
+[connection signal="timeout" from="damage_cd" to="." method="_on_damage_cd_timeout"]
+[connection signal="body_entered" from="r_attack" to="." method="_on_r_attack_body_entered"]
+[connection signal="body_exited" from="r_attack" to="." method="_on_r_attack_body_exited"]
+[connection signal="body_entered" from="l_attack" to="." method="_on_l_attack_body_entered"]
+[connection signal="body_exited" from="l_attack" to="." method="_on_l_attack_body_exited"]
+[connection signal="body_entered" from="u_attack" to="." method="_on_u_attack_body_entered"]
+[connection signal="body_exited" from="u_attack" to="." method="_on_u_attack_body_exited"]
+[connection signal="body_entered" from="d_attack" to="." method="_on_d_attack_body_entered"]
+[connection signal="body_exited" from="d_attack" to="." method="_on_d_attack_body_exited"]
+[connection signal="timeout" from="attack_cd" to="." method="_on_attack_cd_timeout"]
+[connection signal="timeout" from="attack_anim" to="." method="_on_attack_anim_timeout"]

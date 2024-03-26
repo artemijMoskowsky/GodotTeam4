@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://unqplc7lke7u"]
+
+[ext_resource type="Texture2D" uid="uid://cj2fw1da4mo72" path="res://Player/assets/spell1/1.png" id="1_ao805"]
+[ext_resource type="Script" path="res://World/get_spell.gd" id="1_atapw"]
+[ext_resource type="Texture2D" uid="uid://bmk8tal4sqdo3" path="res://Player/assets/spell1/2.png" id="2_xec8o"]
+[ext_resource type="Texture2D" uid="uid://cutf8xptmhmis" path="res://Player/assets/spell1/3.png" id="3_7j4rq"]
+[ext_resource type="Texture2D" uid="uid://cqmo2eps74u0j" path="res://Player/assets/spell1/4.png" id="4_j4uuu"]
+[ext_resource type="Texture2D" uid="uid://dyuooeqhh6b15" path="res://Player/assets/spell1/5.png" id="5_fiy7w"]
+[ext_resource type="Texture2D" uid="uid://mk1uomwrd7fs" path="res://World/assets/save_point/light.png" id="7_t0g4e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvah8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ao805")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xec8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7j4rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j4uuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fiy7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kw3or"]
+radius = 13.0384
+
+[node name="GET_SPELL" type="Area2D"]
+script = ExtResource("1_atapw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uvah8")
+autoplay = "default"
+frame_progress = 0.832606
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_kw3or")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("7_t0g4e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

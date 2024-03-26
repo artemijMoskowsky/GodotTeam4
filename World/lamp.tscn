@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhmt0t00paphx"]
+
+[ext_resource type="Script" path="res://World/lamp.gd" id="1_gbjut"]
+[ext_resource type="Texture2D" uid="uid://bgd0ju021wjh2" path="res://World/assets/LAMP_1.png" id="1_hs81m"]
+
+[sub_resource type="Gradient" id="Gradient_3tx7r"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jfwtd"]
+gradient = SubResource("Gradient_3tx7r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.848624, 0.151376)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lprpc"]
+polygon = PackedVector2Array(14, 0, 14, 1, 15, 1, 15, 5, 14, 5, 14, 9, 16, 9, 16, 10, 17, 10, 17, 11, 18, 11, 18, 12, 19, 12, 19, 13, 20, 13, 20, 14, 21, 14, 21, 15, 22, 15, 22, 16, 22, 29, 23, 29, 23, 32, 3, 32, 3, 29, 4, 29, 4, 17, 4, 16, 4, 15, 5, 15, 5, 14, 6, 14, 6, 13, 7, 13, 7, 12, 8, 12, 8, 11, 9, 11, 9, 10, 10, 10, 10, 9, 12, 9, 12, 5, 11, 5, 11, 1, 12, 1, 12, 0)
+
+[node name="Lamp" type="Node2D"]
+script = ExtResource("1_gbjut")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_right = 25.0
+offset_bottom = 31.0
+scale = Vector2(0.566682, 0.491244)
+texture = ExtResource("1_hs81m")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(7, 11)
+scale = Vector2(1.5, 1.5)
+energy = 0.74
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jfwtd")
+
+[node name="Blink_Cd" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_lprpc")
+
+[connection signal="timeout" from="Blink_Cd" to="." method="_on_blink_cd_timeout"]

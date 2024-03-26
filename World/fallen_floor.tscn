@@ -1,0 +1,336 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcgv5ro06sx5y"]
+
+[ext_resource type="Script" path="res://World/fallen_floor.gd" id="1_cxe6y"]
+[ext_resource type="Texture2D" uid="uid://5e7iswq81flw" path="res://World/assets/fallen_floor.png" id="2_m27ch"]
+[ext_resource type="Texture2D" uid="uid://bhosc0a0f2vrn" path="res://World/assets/fallen_floor2.png" id="3_ti133"]
+[ext_resource type="Texture2D" uid="uid://chuopss5hfqvl" path="res://World/assets/fallen_floor3.png" id="4_snn13"]
+[ext_resource type="Texture2D" uid="uid://dbctq3ddspa4l" path="res://World/assets/fallen_floor4.png" id="5_snjbb"]
+[ext_resource type="Texture2D" uid="uid://ctqm21ge6nph1" path="res://World/assets/fallen_floor5.png" id="6_exd4u"]
+[ext_resource type="Texture2D" uid="uid://bjfmww42xyq1e" path="res://World/assets/stone.png" id="7_jmacr"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n27dh"]
+polygon = PackedVector2Array(-136, -6, -136, 20, 239, 20, 239, -6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5m7l6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m27ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ti133")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_snn13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_snjbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_exd4u")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qmfp"]
+size = Vector2(274.75, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llwrs"]
+size = Vector2(175, 30)
+
+[node name="Fallen_floor" type="StaticBody2D"]
+script = ExtResource("1_cxe6y")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_n27dh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(51.5, 144)
+sprite_frames = SubResource("SpriteFrames_5m7l6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(51.625, 0)
+shape = SubResource("RectangleShape2D_1qmfp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(51.5, 0)
+shape = SubResource("RectangleShape2D_llwrs")
+debug_color = Color(0.686275, 0.490196, 0.258824, 0.419608)
+
+[node name="Stones" type="CPUParticles2D" parent="."]
+position = Vector2(-66, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones2" type="CPUParticles2D" parent="."]
+position = Vector2(-73, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones3" type="CPUParticles2D" parent="."]
+position = Vector2(-81, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones4" type="CPUParticles2D" parent="."]
+position = Vector2(-59, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones5" type="CPUParticles2D" parent="."]
+position = Vector2(-52, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones6" type="CPUParticles2D" parent="."]
+position = Vector2(-45, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones7" type="CPUParticles2D" parent="."]
+position = Vector2(-38, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones8" type="CPUParticles2D" parent="."]
+position = Vector2(-31, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones9" type="CPUParticles2D" parent="."]
+position = Vector2(-23, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones10" type="CPUParticles2D" parent="."]
+position = Vector2(-12, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones11" type="CPUParticles2D" parent="."]
+position = Vector2(-5, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones12" type="CPUParticles2D" parent="."]
+position = Vector2(5, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones13" type="CPUParticles2D" parent="."]
+position = Vector2(14, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones14" type="CPUParticles2D" parent="."]
+position = Vector2(24, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones15" type="CPUParticles2D" parent="."]
+position = Vector2(31, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones16" type="CPUParticles2D" parent="."]
+position = Vector2(38, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones17" type="CPUParticles2D" parent="."]
+position = Vector2(47, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones18" type="CPUParticles2D" parent="."]
+position = Vector2(52, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones19" type="CPUParticles2D" parent="."]
+position = Vector2(62, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones20" type="CPUParticles2D" parent="."]
+position = Vector2(68, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones21" type="CPUParticles2D" parent="."]
+position = Vector2(77, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones22" type="CPUParticles2D" parent="."]
+position = Vector2(86, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones23" type="CPUParticles2D" parent="."]
+position = Vector2(94, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones24" type="CPUParticles2D" parent="."]
+position = Vector2(101, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones25" type="CPUParticles2D" parent="."]
+position = Vector2(111, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones26" type="CPUParticles2D" parent="."]
+position = Vector2(118, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones27" type="CPUParticles2D" parent="."]
+position = Vector2(127, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones28" type="CPUParticles2D" parent="."]
+position = Vector2(134, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones29" type="CPUParticles2D" parent="."]
+position = Vector2(140, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones30" type="CPUParticles2D" parent="."]
+position = Vector2(149, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones31" type="CPUParticles2D" parent="."]
+position = Vector2(158, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones32" type="CPUParticles2D" parent="."]
+position = Vector2(165, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones33" type="CPUParticles2D" parent="."]
+position = Vector2(174, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[node name="Stones34" type="CPUParticles2D" parent="."]
+position = Vector2(179, 27)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("7_jmacr")
+gravity = Vector2(0, 380)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

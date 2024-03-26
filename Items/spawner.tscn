@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://blugrsbti2nld"]
+
+[ext_resource type="Script" path="res://Items/spawner.gd" id="1_u4dyl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqt1a"]
+radius = 36.0555
+
+[node name="Spawner" type="StaticBody2D"]
+script = ExtResource("1_u4dyl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aqt1a")
+disabled = true
+debug_color = Color(0.815686, 0.407843, 0, 0.419608)

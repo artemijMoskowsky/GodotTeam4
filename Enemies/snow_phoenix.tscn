@@ -1,0 +1,177 @@
+[gd_scene load_steps=18 format=3 uid="uid://co3fkfs1wgne6"]
+
+[ext_resource type="Script" path="res://Enemies/snow_phoenix.gd" id="1_6ybeg"]
+[ext_resource type="Texture2D" uid="uid://byxuwcxsfltj1" path="res://Enemies/Snow_phoenix/stay/1.png" id="1_vmonx"]
+[ext_resource type="Texture2D" uid="uid://daxlucsnmhlks" path="res://Enemies/Snow_phoenix/stay/2.png" id="2_j8x78"]
+[ext_resource type="Texture2D" uid="uid://dtdvig3x66oxs" path="res://Enemies/Snow_phoenix/stay/3.png" id="3_xoid8"]
+[ext_resource type="Texture2D" uid="uid://egvt18nagsiy" path="res://Enemies/Snow_phoenix/stay/4.png" id="4_27ri3"]
+[ext_resource type="Texture2D" uid="uid://huj68t2yeo70" path="res://Enemies/Snow_phoenix/stay/5.png" id="5_33sce"]
+[ext_resource type="Texture2D" uid="uid://toan1ib01e31" path="res://Enemies/Snow_phoenix/stay/6.png" id="6_yeq3g"]
+[ext_resource type="Texture2D" uid="uid://cixxqm6hkd7xw" path="res://Player/assets/Health/No_Health.png" id="8_15i4a"]
+[ext_resource type="Texture2D" uid="uid://b5ilgllr262s" path="res://Player/assets/Health/Full_Health.png" id="9_yi7jo"]
+
+[sub_resource type="Animation" id="Animation_iv04s"]
+resource_name = "Fly"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_6o1nl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xx7e"]
+_data = {
+"Fly": SubResource("Animation_iv04s"),
+"RESET": SubResource("Animation_6o1nl")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q43v7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vmonx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j8x78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xoid8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_27ri3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_33sce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yeq3g")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxd3w"]
+size = Vector2(20, 15)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cv3q6"]
+radius = 207.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xqet"]
+radius = 115.352
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66jid"]
+size = Vector2(5, 57)
+
+[node name="Snow_phoenix" type="RigidBody2D" groups=["Enemies"]]
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource("1_6ybeg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0xx7e")
+}
+autoplay = "Fly"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q43v7")
+animation = &"fly"
+frame = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_mxd3w")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = -22.0
+offset_top = -23.0
+offset_right = 81.0
+offset_bottom = -8.0
+scale = Vector2(0.437966, 0.363778)
+max_value = 25.0
+texture_under = ExtResource("8_15i4a")
+texture_progress = ExtResource("9_yi7jo")
+
+[node name="View" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_cv3q6")
+debug_color = Color(0.678431, 0.494118, 0.290196, 0.419608)
+
+[node name="Damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_0xqet")
+debug_color = Color(0.984314, 0, 0.360784, 0.419608)
+
+[node name="Attack_cd" type="Timer" parent="."]
+
+[node name="Up" type="Area2D" parent="."]
+position = Vector2(0, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_66jid")
+debug_color = Color(0.67451, 0.305882, 1, 0.419608)
+
+[node name="damage_cd" type="Timer" parent="."]
+wait_time = 0.55
+
+[connection signal="body_entered" from="View" to="." method="_on_view_body_entered"]
+[connection signal="body_exited" from="View" to="." method="_on_view_body_exited"]
+[connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
+[connection signal="body_exited" from="Damage" to="." method="_on_damage_body_exited"]
+[connection signal="timeout" from="Attack_cd" to="." method="_on_attack_cd_timeout"]
+[connection signal="body_entered" from="Up" to="." method="_on_up_body_entered"]
+[connection signal="body_exited" from="Up" to="." method="_on_up_body_exited"]
+[connection signal="timeout" from="damage_cd" to="." method="_on_damage_cd_timeout"]

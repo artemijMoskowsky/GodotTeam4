@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://GLOBAL.gd" id="1_6pjs6"]
 
 [node name="Global" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_6pjs6")

@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://buu6lk3882cbq"]
+
+[ext_resource type="Script" path="res://Items/coin.gd" id="1_ykc2j"]
+[ext_resource type="Texture2D" uid="uid://b3mbp8o1mr3bm" path="res://World/assets/coin.png" id="2_wkoeq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hsmp"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8y01"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y8x2"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjwj2"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brgjr"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i56ao"]
+atlas = ExtResource("2_wkoeq")
+region = Rect2(75, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvw4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hsmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8y01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y8x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjwj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brgjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i56ao")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kyoed"]
+b = Vector2(0, -3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4sxv"]
+radius = 5.0
+
+[node name="Coin" type="RigidBody2D"]
+mass = 0.2
+gravity_scale = 0.5
+script = ExtResource("1_ykc2j")
+
+[node name="ColorRect" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jvw4q")
+autoplay = "default"
+frame_progress = 0.1657
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.239999, 1)
+shape = SubResource("SegmentShape2D_kyoed")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o4sxv")
+debug_color = Color(0.952941, 0, 0.556863, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

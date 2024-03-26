@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxh2e4e3mmtqg"]
+
+[ext_resource type="Script" path="res://Inventory.gd" id="1_r8sr2"]
+[ext_resource type="Texture2D" uid="uid://blu8budbhu842" path="res://Player/assets/Inventory.png" id="2_8dosj"]
+
+[node name="Inventory" type="Node2D" groups=["Inventory"]]
+visible = false
+script = ExtResource("1_r8sr2")
+
+[node name="InventoryBackground" type="TextureRect" parent="."]
+offset_right = 462.0
+offset_bottom = 260.0
+texture = ExtResource("2_8dosj")
+expand_mode = 1
+
+[node name="KeyLabel" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 24.0
+offset_right = 53.0
+offset_bottom = 47.0
+text = "0"

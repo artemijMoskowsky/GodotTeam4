@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk3ulpurupxkx"]
+
+[ext_resource type="Script" path="res://World/switch.gd" id="1_4bov8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0q7w"]
+
+[node name="Switch" type="Area2D" groups=["switches"]]
+script = ExtResource("1_4bov8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m0q7w")

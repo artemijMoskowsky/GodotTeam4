@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0qt8aab25pfl"]
+
+[ext_resource type="Script" path="res://World/door.gd" id="1_0ags8"]
+[ext_resource type="Texture2D" uid="uid://b71ak8w3ehwx7" path="res://World/assets/door/1234_3.png" id="2_pxfao"]
+[ext_resource type="Texture2D" uid="uid://tefv67xyhsfc" path="res://World/assets/door/1234_2.png" id="3_s6fgx"]
+[ext_resource type="Texture2D" uid="uid://da81km1d7u474" path="res://World/assets/door/1234_1.png" id="4_c06md"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2bee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pxfao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s6fgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c06md")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_c06md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s6fgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pxfao")
+}],
+"loop": false,
+"name": &"reverse",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32hog"]
+size = Vector2(5, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17r4t"]
+radius = 30.0167
+
+[node name="Door" type="StaticBody2D" groups=["doors"]]
+script = ExtResource("1_0ags8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 25)
+sprite_frames = SubResource("SpriteFrames_e2bee")
+animation = &"reverse"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 25)
+shape = SubResource("RectangleShape2D_32hog")
+
+[node name="Player_searcher" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_searcher"]
+position = Vector2(2, 25)
+shape = SubResource("CircleShape2D_17r4t")
+debug_color = Color(0.960784, 0.160784, 0.305882, 0.419608)
+
+[connection signal="body_entered" from="Player_searcher" to="." method="_on_player_searcher_body_entered"]
+[connection signal="body_exited" from="Player_searcher" to="." method="_on_player_searcher_body_exited"]

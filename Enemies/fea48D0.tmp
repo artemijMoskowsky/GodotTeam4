@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://capkdbx4v1yvh"]
+
+[ext_resource type="Script" path="res://Enemies/feather.gd" id="1_gdyex"]
+[ext_resource type="Texture2D" uid="uid://b07lnkoer73b6" path="res://Enemies/Snow_phoenix/feather/1.png" id="1_unh3v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5b8f"]
+radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p3lm"]
+size = Vector2(8, 10)
+
+[node name="Feather" type="CharacterBody2D"]
+script = ExtResource("1_gdyex")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -20.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = 50.0
+texture = ExtResource("1_unh3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_s5b8f")
+
+[node name="Damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_2p3lm")
+debug_color = Color(0.988235, 0, 0.290196, 0.419608)
+
+[node name="Life" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

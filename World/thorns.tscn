@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://caaxdh81kx8f7"]
+
+[ext_resource type="Script" path="res://World/thorns.gd" id="1_3eh0p"]
+[ext_resource type="Texture2D" uid="uid://4knkm5anq6am" path="res://World/assets/thorns.png" id="1_y5540"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulakj"]
+size = Vector2(25, 14.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv2gq"]
+size = Vector2(25, 11)
+
+[node name="Thorns" type="StaticBody2D" groups=["sword_jump"]]
+script = ExtResource("1_3eh0p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 25.0
+offset_bottom = 25.0
+texture = ExtResource("1_y5540")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, 18.125)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_ulakj")
+one_way_collision = true
+
+[node name="Damage_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_zone"]
+position = Vector2(12.5, 5.5)
+shape = SubResource("RectangleShape2D_mv2gq")
+debug_color = Color(0.988235, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="Damage_zone" to="." method="_on_damage_zone_body_entered"]

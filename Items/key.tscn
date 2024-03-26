@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxjqkkemwvo53"]
+
+[ext_resource type="Texture2D" uid="uid://05rho3ei7pi3" path="res://Items/key.png" id="1_em572"]
+[ext_resource type="Script" path="res://Items/key.gd" id="1_rjhhf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcdu2"]
+radius = 10.0499
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr6tn"]
+atlas = ExtResource("1_em572")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvmbx"]
+atlas = ExtResource("1_em572")
+region = Rect2(25, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8w3w"]
+atlas = ExtResource("1_em572")
+region = Rect2(50, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejrhd"]
+atlas = ExtResource("1_em572")
+region = Rect2(75, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpu4i"]
+atlas = ExtResource("1_em572")
+region = Rect2(100, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6amk"]
+atlas = ExtResource("1_em572")
+region = Rect2(125, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk8s3"]
+atlas = ExtResource("1_em572")
+region = Rect2(150, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoiox"]
+atlas = ExtResource("1_em572")
+region = Rect2(175, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86ijw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr6tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvmbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8w3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejrhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpu4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6amk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk8s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoiox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_rjhhf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fcdu2")
+debug_color = Color(0.686275, 0.501961, 0, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_86ijw")
+autoplay = "default"
+frame_progress = 0.652243
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

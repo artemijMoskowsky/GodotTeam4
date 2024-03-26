@@ -31,11 +31,8 @@ position = Vector2(174, 240)
 [node name="Enemy" parent="." instance=ExtResource("4_lgbn6")]
 position = Vector2(723, 243)
 scale = Vector2(1.01005, 1.03355)
-mass = 0.01
-gravity_scale = 0.0
 start_x = 50
 end_x = 50
-speed = 1
 
 [node name="TileMap" parent="." instance=ExtResource("5_teas6")]
 position = Vector2(-3, 1)

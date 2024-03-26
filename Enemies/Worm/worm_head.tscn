@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbem0npqmdfy7"]
+
+[ext_resource type="Script" path="res://Enemies/Worm/worm_head.gd" id="1_iud3f"]
+[ext_resource type="Texture2D" uid="uid://bqubmrwbow4m" path="res://Enemies/Worm/1.png" id="1_vhigs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_102rj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8neo"]
+atlas = ExtResource("1_vhigs")
+region = Rect2(0, 0, 75, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6enp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8neo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xy2r5"]
+radius = 25.02
+
+[node name="Worm_head" type="RigidBody2D"]
+script = ExtResource("1_iud3f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_102rj")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -4
+sprite_frames = SubResource("SpriteFrames_h6enp")
+autoplay = "default"
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Damage_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_zone"]
+shape = SubResource("CircleShape2D_xy2r5")
+debug_color = Color(0.996078, 0, 0.223529, 0.419608)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Damage_zone" to="." method="_on_damage_zone_body_entered"]

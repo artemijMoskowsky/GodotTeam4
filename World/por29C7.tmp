@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ydnhldcujkuk"]
+
+[ext_resource type="Texture2D" uid="uid://1ee42cdhwjn0" path="res://World/assets/portal.png" id="1_ho7w4"]
+[ext_resource type="Script" path="res://World/portal.gd" id="1_mln0k"]
+[ext_resource type="Texture2D" uid="uid://ctjm63hmpod5b" path="res://World/assets/portal2.png" id="3_tiij3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_148g1"]
+size = Vector2(141, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nfx6"]
+size = Vector2(64, 112)
+
+[node name="Portal" type="StaticBody2D"]
+script = ExtResource("1_mln0k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ho7w4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(70.5, 16)
+shape = SubResource("RectangleShape2D_148g1")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(68, 89)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, -1)
+shape = SubResource("RectangleShape2D_0nfx6")
+debug_color = Color(0.847059, 0, 0.901961, 0.419608)
+
+[node name="TextureRect2" type="TextureRect" parent="Area2D"]
+offset_left = -77.0
+offset_top = -57.0
+offset_right = 35.0
+offset_bottom = 55.0
+texture = ExtResource("3_tiij3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bl58m5yxfkuiw"]
+
+[ext_resource type="Script" path="res://Player/spell1.gd" id="1_53woq"]
+[ext_resource type="Texture2D" uid="uid://cj2fw1da4mo72" path="res://Player/assets/spell1/1.png" id="2_c0xr2"]
+[ext_resource type="Texture2D" uid="uid://bmk8tal4sqdo3" path="res://Player/assets/spell1/2.png" id="3_vw3q3"]
+[ext_resource type="Texture2D" uid="uid://cutf8xptmhmis" path="res://Player/assets/spell1/3.png" id="4_6njyw"]
+[ext_resource type="Texture2D" uid="uid://cqmo2eps74u0j" path="res://Player/assets/spell1/4.png" id="5_v18kv"]
+[ext_resource type="Texture2D" uid="uid://dyuooeqhh6b15" path="res://Player/assets/spell1/5.png" id="6_ql38v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ecwqi"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6pjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c0xr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vw3q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6njyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v18kv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ql38v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7eua"]
+radius = 174.0
+
+[node name="Spell" type="Area2D"]
+script = ExtResource("1_53woq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ecwqi")
+debug_color = Color(0.996078, 0, 0.156863, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c6pjx")
+autoplay = "default"
+frame_progress = 0.298
+
+[node name="Player_searcher" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_searcher"]
+shape = SubResource("CircleShape2D_c7eua")
+debug_color = Color(0.784314, 0.435294, 0, 0.419608)
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Player_searcher" to="." method="_on_player_searcher_body_entered"]
