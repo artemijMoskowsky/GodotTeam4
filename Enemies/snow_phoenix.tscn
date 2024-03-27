@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://co3fkfs1wgne6"]
+[gd_scene load_steps=20 format=3 uid="uid://co3fkfs1wgne6"]
 
 [ext_resource type="Script" path="res://Enemies/snow_phoenix.gd" id="1_6ybeg"]
 [ext_resource type="Texture2D" uid="uid://byxuwcxsfltj1" path="res://Enemies/Snow_phoenix/stay/1.png" id="1_vmonx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://toan1ib01e31" path="res://Enemies/Snow_phoenix/stay/6.png" id="6_yeq3g"]
 [ext_resource type="Texture2D" uid="uid://cixxqm6hkd7xw" path="res://Player/assets/Health/No_Health.png" id="8_15i4a"]
 [ext_resource type="Texture2D" uid="uid://b5ilgllr262s" path="res://Player/assets/Health/Full_Health.png" id="9_yi7jo"]
+[ext_resource type="AudioStream" uid="uid://bwj8lwbca1sc6" path="res://Player/assets/Sounds/damage.mp3" id="10_nnysg"]
+[ext_resource type="AudioStream" uid="uid://dog23ay72nryc" path="res://Player/assets/Sounds/flying.mp3" id="11_ud44k"]
 
 [sub_resource type="Animation" id="Animation_iv04s"]
 resource_name = "Fly"
@@ -166,6 +168,13 @@ debug_color = Color(0.67451, 0.305882, 1, 0.419608)
 
 [node name="damage_cd" type="Timer" parent="."]
 wait_time = 0.55
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_nnysg")
+
+[node name="flying" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ud44k")
+max_distance = 500.0
 
 [connection signal="body_entered" from="View" to="." method="_on_view_body_entered"]
 [connection signal="body_exited" from="View" to="." method="_on_view_body_exited"]

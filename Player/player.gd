@@ -33,6 +33,8 @@ var button_attack: TouchScreenButton
 var button_pause: TouchScreenButton
 var button_spell1: TouchScreenButton
 
+var bg_music = false
+
 var is_spell1_in_hero = false
 var platform1_was_fallen
 var boss1_was_killed
@@ -105,6 +107,9 @@ func _physics_process(delta):
 			velocity.y = 300
 	else:
 		last_pos = position
+	if bg_music == false:
+		$background_music.play(0.0)
+		bg_music = true
 		
 	if return_to_floor:
 		position = last_pos
@@ -275,6 +280,7 @@ func _physics_process(delta):
 
 func attacking():
 	if can_attack:
+		$attack.play(0.0)
 		flag_attack_anim = true
 		attack_anim_timer.start()
 		animation_player.play("Attack")
@@ -324,6 +330,7 @@ func attacking():
 
 func get_damage(damage, get_kickback = null):
 	if not flag_damage:
+		$damage_sound.play(0.0)
 		flag_damage = true
 		damage_cd.start()
 		health -= damage
@@ -394,3 +401,7 @@ func _on_d_attack_body_exited(body):
 	if body in d_enemies:
 		var index = d_enemies.find(body, 0)
 		d_enemies.remove_at(index)
+
+
+func _on_background_music_finished():
+	bg_music = false

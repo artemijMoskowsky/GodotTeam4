@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b06bn0473uhw0"]
+[gd_scene load_steps=32 format=3 uid="uid://b06bn0473uhw0"]
 
 [ext_resource type="Script" path="res://Enemies/The Keeper/the_keeper.gd" id="1_h0nu5"]
 [ext_resource type="Texture2D" uid="uid://b56n854d0tnhh" path="res://Enemies/The Keeper/Attack1/1.png" id="1_x8lw6"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dwi3dsux2avcb" path="res://Enemies/The Keeper/Idle/4.png" id="13_v46j8"]
 [ext_resource type="Texture2D" uid="uid://d0jg13rqadq2f" path="res://Enemies/The Keeper/Move/1.png" id="15_8v4ue"]
 [ext_resource type="Texture2D" uid="uid://36tna83qam46" path="res://Enemies/The Keeper/Move/2.png" id="16_s6ye7"]
+[ext_resource type="AudioStream" uid="uid://bwj8lwbca1sc6" path="res://Player/assets/Sounds/damage.mp3" id="19_f551f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6jho2"]
 animations = [{
@@ -303,6 +304,9 @@ shape = SubResource("RectangleShape2D_uocj5")
 debug_color = Color(0.501961, 0, 0.0941176, 0.419608)
 
 [node name="DamageCD" type="Timer" parent="."]
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_f551f")
 
 [connection signal="body_entered" from="Attack_left" to="." method="_on_attack_left_body_entered"]
 [connection signal="body_exited" from="Attack_left" to="." method="_on_attack_left_body_exited"]

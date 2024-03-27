@@ -123,6 +123,7 @@ func _physics_process(delta):
 
 func get_damage(gdamage):
 	if not flag_damage:
+		$damage_sound.play(0.0)
 		flag_damage = true
 		damage_cd.start()
 		health -= gdamage

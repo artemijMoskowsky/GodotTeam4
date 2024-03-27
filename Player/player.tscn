@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://b87po7j4kxvc"]
+[gd_scene load_steps=73 format=3 uid="uid://b87po7j4kxvc"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_xihc3"]
 [ext_resource type="Texture2D" uid="uid://birr6fwus3dcs" path="res://Player/assets/Player-attack/1.png" id="2_2uw5k"]
@@ -38,13 +38,16 @@
 [ext_resource type="Texture2D" uid="uid://dgywar8fjrwbf" path="res://Player/assets/Attack/4.png" id="30_jqfhn"]
 [ext_resource type="Texture2D" uid="uid://c2hmjbncr4wbe" path="res://Player/assets/Attack/5.png" id="31_gdv5h"]
 [ext_resource type="AudioStream" uid="uid://daa66n1b8aq1o" path="res://Player/assets/Sounds/snow_step.mp3" id="38_hn3ep"]
+[ext_resource type="AudioStream" uid="uid://bfdqqffw0yo8r" path="res://Player/assets/Sounds/attack.mp3" id="39_linl5"]
 [ext_resource type="Texture2D" uid="uid://c0fiaynd4msea" path="res://Player/assets/Buttons/jump.png" id="39_xgqqb"]
 [ext_resource type="PackedScene" uid="uid://dxh2e4e3mmtqg" path="res://Player/inventory.tscn" id="40_oqysx"]
 [ext_resource type="Texture2D" uid="uid://k6ml4e3dax0j" path="res://Player/assets/Buttons/attack.png" id="40_ppxvq"]
+[ext_resource type="AudioStream" uid="uid://bwj8lwbca1sc6" path="res://Player/assets/Sounds/damage.mp3" id="40_qc1r3"]
 [ext_resource type="Texture2D" uid="uid://0ukl0iocdxm6" path="res://Player/assets/Buttons/spell.png" id="41_4lccg"]
 [ext_resource type="PackedScene" uid="uid://bip60vdf146o2" path="res://Player/joystick/joystick.tscn" id="41_ayprf"]
 [ext_resource type="Texture2D" uid="uid://bml8tgbia8axj" path="res://Player/assets/Buttons/pause.png" id="41_xpitb"]
 [ext_resource type="PackedScene" uid="uid://m2sp4nuvrbfs" path="res://World/message.tscn" id="42_0rsuk"]
+[ext_resource type="AudioStream" uid="uid://d4gxhn8nlysfj" path="res://Player/assets/Sounds/dark shadows.wav" id="48_e8lyi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7cnum"]
 animations = [{
@@ -515,7 +518,10 @@ stream = ExtResource("38_hn3ep")
 volume_db = -15.0
 
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
-visible = false
+stream = ExtResource("39_linl5")
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("40_qc1r3")
 
 [node name="ButtonJump" type="TouchScreenButton" parent="."]
 z_index = 10
@@ -556,9 +562,13 @@ position = Vector2(-231, -169)
 [node name="Message" parent="." instance=ExtResource("42_0rsuk")]
 material = SubResource("CanvasItemMaterial_23xuy")
 offset_left = -125.0
-offset_top = 47.0
+offset_top = 20.0
 offset_right = -86.0
-offset_bottom = 70.0
+offset_bottom = 43.0
+
+[node name="background_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("48_e8lyi")
+volume_db = -20.0
 
 [connection signal="timeout" from="damage_cd" to="." method="_on_damage_cd_timeout"]
 [connection signal="body_entered" from="r_attack" to="." method="_on_r_attack_body_entered"]
@@ -571,3 +581,4 @@ offset_bottom = 70.0
 [connection signal="body_exited" from="d_attack" to="." method="_on_d_attack_body_exited"]
 [connection signal="timeout" from="attack_cd" to="." method="_on_attack_cd_timeout"]
 [connection signal="timeout" from="attack_anim" to="." method="_on_attack_anim_timeout"]
+[connection signal="finished" from="background_music" to="." method="_on_background_music_finished"]

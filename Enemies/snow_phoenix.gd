@@ -37,6 +37,8 @@ func _process(delta):
 	if up_count != 0:
 		linear_velocity.y = -2
 	$AnimationPlayer.play("Fly")
+	if $AnimatedSprite2D.frame == 3:
+		$flying.play(0.0)
 	if player != null and not player_in_dmg:
 		linear_velocity = (player.position - position)/speed/20
 		if player.position.x < position.x:
@@ -92,6 +94,7 @@ func _on_up_body_exited(body):
 
 func get_damage(damage):
 	if not flag_damage:
+		$damage_sound.play(0.0)
 		flag_damage = true
 		damage_cd.start()
 		health -= damage

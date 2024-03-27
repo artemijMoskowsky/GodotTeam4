@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://hwf5sbfxvt1a"]
+[gd_scene load_steps=9 format=3 uid="uid://hwf5sbfxvt1a"]
 
 [ext_resource type="Script" path="res://Enemies/skeleton.gd" id="1_qalpg"]
 [ext_resource type="Texture2D" uid="uid://cdtpie0spmdfu" path="res://Enemies/Snow_bug/Move/1.png" id="2_b4mq0"]
 [ext_resource type="Texture2D" uid="uid://tvlcmnktbg4j" path="res://Enemies/Snow_bug/Move/2.png" id="3_ranwi"]
+[ext_resource type="AudioStream" uid="uid://bwj8lwbca1sc6" path="res://Player/assets/Sounds/damage.mp3" id="6_q5inb"]
 [ext_resource type="Texture2D" uid="uid://cixxqm6hkd7xw" path="res://Player/assets/Health/No_Health.png" id="14_6q68g"]
 [ext_resource type="Texture2D" uid="uid://b5ilgllr262s" path="res://Player/assets/Health/Full_Health.png" id="15_3u3sh"]
 
@@ -54,5 +55,8 @@ texture_progress = ExtResource("15_3u3sh")
 
 [node name="damage_cd" type="Timer" parent="."]
 wait_time = 0.55
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_q5inb")
 
 [connection signal="timeout" from="damage_cd" to="." method="_on_damage_cd_timeout"]

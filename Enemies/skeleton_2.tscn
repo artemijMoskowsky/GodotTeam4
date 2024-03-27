@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://blppa14lflxey"]
+[gd_scene load_steps=61 format=3 uid="uid://blppa14lflxey"]
 
 [ext_resource type="Script" path="res://Enemies/Skeleton2.gd" id="1_e3wgi"]
 [ext_resource type="Texture2D" uid="uid://crbi0wf7obx6n" path="res://Enemies/Snow_skeleton/Attack/Skeleton Attack.png" id="2_o1i7y"]
 [ext_resource type="Texture2D" uid="uid://bx7ubjoe3y3r4" path="res://Enemies/Snow_skeleton/Idle/Skeleton Idle.png" id="3_j0o4k"]
 [ext_resource type="Texture2D" uid="uid://h6lu5yb8ep64" path="res://Enemies/Snow_skeleton/Run/Skeleton Walk.png" id="4_mt1q0"]
+[ext_resource type="AudioStream" uid="uid://bwj8lwbca1sc6" path="res://Player/assets/Sounds/damage.mp3" id="7_3po8r"]
 [ext_resource type="Texture2D" uid="uid://cixxqm6hkd7xw" path="res://Player/assets/Health/No_Health.png" id="14_vmt6b"]
 [ext_resource type="Texture2D" uid="uid://b5ilgllr262s" path="res://Player/assets/Health/Full_Health.png" id="15_iht5r"]
 
@@ -508,6 +509,9 @@ position = Vector2(10, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right_falling"]
 shape = SubResource("RectangleShape2D_28uk1")
+
+[node name="damage_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3po8r")
 
 [connection signal="body_entered" from="View" to="." method="_on_view_body_entered"]
 [connection signal="body_exited" from="View" to="." method="_on_view_body_exited"]

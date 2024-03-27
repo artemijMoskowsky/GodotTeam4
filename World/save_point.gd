@@ -61,3 +61,4 @@ func save(player):
 	global_scene.boss1_was_killed = player.boss1_was_killed
 	global_scene.keys = player.inventory_node.keys
 	global_scene.coins = player.coins
+	global_scene.is_spell1_in_hero = player.is_spell1_in_hero

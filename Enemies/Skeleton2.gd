@@ -93,6 +93,7 @@ func _on_damage_zone_body_exited(body):
 
 func get_damage(damage):
 	if not flag_damage:
+		$damage_sound.play(0.0)
 		flag_damage = true
 		damage_cd.start()
 		health -= damage
